@@ -25,4 +25,8 @@ def test_args():
     print(client.items.Hello3)
 
 def test_json():
-    pass
+    client = Client(DaphneModeEnum.JSON, ['Hello1', 'Hello2', 'Hello3'])
+    client.set_json('test.json')
+    print(client.items.Hello1)
+    print(client.items.Hello2)
+    print(client.items.Hello3)

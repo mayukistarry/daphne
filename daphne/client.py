@@ -1,5 +1,6 @@
 import os
 import argparse
+import json
 
 class DaphneModeEnum:
     ENV = 0
@@ -65,8 +66,21 @@ class Client:
                 if getattr(self.__items, declaration) is None:
                     raise Exception('引数が設定されていません。')
     
-    def set_json(self):
-        pass
+    def set_json(self, path):
+        with open(path) as f:
+            file_data = f.read()
+        json_data = json.loads(file_data)
+
+        for declaration in self.__value_declares:
+            try:
+                value = json_data[declaration]
+                setattr(self.__items, declaration, value)
+            except KeyError:
+                if self.__is_strict:
+                    raise Exception('JSONが設定されていません。')
+                else:
+                    #ログ系の何かはあった方がいいか
+                    continue
     
     def set_input(self):
         pass
