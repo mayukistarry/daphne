@@ -30,3 +30,10 @@ def test_json():
     print(client.items.Hello1)
     print(client.items.Hello2)
     print(client.items.Hello3)
+
+def test_input():
+    client = Client(DaphneModeEnum.INPUT, ['Hello1', 'Hello2', 'Hello3'])
+    client.set_input()
+    print(client.items.Hello1)
+    print(client.items.Hello2)
+    print(client.items.Hello3)

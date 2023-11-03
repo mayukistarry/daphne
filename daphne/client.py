@@ -83,7 +83,9 @@ class Client:
                     continue
     
     def set_input(self):
-        pass
+        for declaration in self.__value_declares:
+            value = input(f'{declaration}:')
+            setattr(self.__items, declaration, value)
     
     def set_db(self):
         pass
